@@ -28,18 +28,18 @@ for trait in traits:
 def load_roberta(model_path,device):
     # Load the saved model and tokenizer
     tokenizer = RobertaTokenizer.from_pretrained(model_path)
-    model = RobertaForSequenceClassification.from_pretrained(model_path)
+    model = RobertaForSequenceClassification.from_pretrained(model_path, token="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", num_labels=1)
     model.to(device)
     return model,tokenizer
 
 def load_analysis_engine():
     # Load the saved model and tokenizer
-    model_path = r"C:\Users\User\Desktop\test\Personality\model_roberta\big5\roberta6.1"
+    model_path = "theweekday/personality_traits_"
     models = {}
     tokenizers = {}
 
     for t,trait in personality_traits.items():
-        path = f"{model_path}\{trait}"
+        path = f"{model_path}{trait}"
         models[t], tokenizers[t] = load_roberta(path, "cuda")
     return models, tokenizers
 
