@@ -13,7 +13,7 @@ from langchain_core.prompts import ChatPromptTemplate
 st.title("Personality Traits Analysis Streamlit App")
 
 # Predefined Variables
-os.environ["GROQ_API_KEY"] = "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"
+
 client = Groq()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 personality_traits = {}
