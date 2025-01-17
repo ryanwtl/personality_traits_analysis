@@ -223,7 +223,3 @@ elif option == "Upload an MP3":
 
         elapsed_time = time.time() - start_time
         print(f"Response Elapsed time: {elapsed_time:.4f} seconds \n")
-
-# # Check and display the data type of the content variable
-# if content is not None:
-#     st.write("Data type of content:", type(content))
