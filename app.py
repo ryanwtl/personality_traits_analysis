@@ -8,12 +8,13 @@ import torch
 from groq import Groq
 import os
 from langchain_core.prompts import ChatPromptTemplate
+import time
 
+system_start_time = time.time()
 # Title of the app
 st.title("Personality Traits Analysis Streamlit App")
 
 # Predefined Variables
-
 client = Groq()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 personality_traits = {}
@@ -28,7 +29,7 @@ for trait in traits:
 def load_roberta(model_path,device):
     # Load the saved model and tokenizer
     tokenizer = RobertaTokenizer.from_pretrained(model_path)
-    model = RobertaForSequenceClassification.from_pretrained(model_path, token="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", num_labels=1)
+    model = RobertaForSequenceClassification.from_pretrained(model_path, num_labels=1)
     model.to(device)
     return model,tokenizer
 
@@ -145,61 +146,79 @@ don't know. DON'T MAKE UP ANYTHING.
 
 ---
 
-Provide insights based on the above context.
+Provide insights based on the above context. Start with the '1. Openness : '.
 """
 
 def insights_of_results(analysis):
+    model = "llama-3.1-70b-versatile"
+    temperature = 1.0
+    max_tokens = 500
+    top_p = 1
 
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=analysis)
 
     messages = generate_query_messages(prompt)
-    print(f"this is the message : \n{messages}")
+    print(f"\n this is the message : \n{messages} \n")
 
     response = client.chat.completions.create(
-        model="llama-3.1-70b-versatile",  # Ensure this model name is correct
+        model=model,  # Ensure this model name is correct
         messages=messages,
-        temperature=1,
-        max_tokens=500,
-        top_p=1,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        top_p=top_p,
         stream=False,
     )
 
     result = response.choices[0].message.content
-
-    st.write(result)
+    st.write(f"""Respond from Chat Assistant : {model}""")
+    st.write(f"""Based on the provided personality traits scores, here are some insights : \n{result}""")
 
 # ======================================= Analysis Starts HERE ======================================= #
 # Sidebar for navigation
 option = st.sidebar.selectbox("Choose an option:", ["Prompt a Sentence", "Upload a CSV", "Upload an MP3"])
 
 models, tokenizers = load_analysis_engine()
+system_elapsed_time = time.time() - system_start_time
+print(f"System Elapsed time: {system_elapsed_time:.4f} seconds \n")
 
 if option == "Prompt a Sentence":
     # Sentence input and display
     content = st.text_input("Enter a sentence:")
+    start_time = time.time()
     if content:
         analysis = text_personality_traits_analysis(content,models,tokenizers)
         analysis_result_output2(analysis)
         insights_of_results(analysis)
+
+        elapsed_time = time.time() - start_time
+        print(f"Elapsed time: {elapsed_time:.4f} seconds \n")
     
 
 elif option == "Upload a CSV":
     # File uploader for CSV
     content = st.file_uploader("Upload a CSV file", type=["csv"])
+    start_time = time.time()
     if content:
         df = pd.read_csv(content, encoding='latin-1')
         st.write("Content of the uploaded CSV:")
         st.dataframe(df)
         csv_personality_traits_analysis(content)
 
+        elapsed_time = time.time() - start_time
+        print(f"Elapsed time: {elapsed_time:.4f} seconds \n")
+
 elif option == "Upload an MP3":
     # File uploader for MP3
     content = st.file_uploader("Upload an MP3 file", type=["mp3"])
+    start_time = time.time()
     if content:
         # Play the uploaded MP3 file
         st.audio(content, format="audio/mp3")
         mp3_to_text(content)
+
+        elapsed_time = time.time() - start_time
+        print(f"Elapsed time: {elapsed_time:.4f} seconds \n")
 
 # # Check and display the data type of the content variable
 # if content is not None:
