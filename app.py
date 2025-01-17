@@ -16,6 +16,7 @@ system_start_time = time.time()
 st.title("Personality Traits Analysis Streamlit App")
 
 # Predefined Variables
+load_dotenv()
 groq_api_key = os.getenv("GROQ_API_KEY")
 huggingface_api_key = os.getenv("HUGGINGFACE_API_KEY")
 client = Groq()
