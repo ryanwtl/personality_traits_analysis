@@ -1,20 +1,23 @@
 import streamlit as st
 import pandas as pd
 import io
+import time
+import os
 from pydub import AudioSegment
 from pydub.playback import play
-from transformers import RobertaTokenizer, RobertaForSequenceClassification
 import torch
-from groq import Groq
-import os
+from transformers import RobertaTokenizer, RobertaForSequenceClassification
 from langchain_core.prompts import ChatPromptTemplate
-import time
+from groq import Groq
+from dotenv import load_dotenv
 
 system_start_time = time.time()
 # Title of the app
 st.title("Personality Traits Analysis Streamlit App")
 
 # Predefined Variables
+groq_api_key = os.getenv("GROQ_API_KEY")
+huggingface_api_key = os.getenv("HUGGINGFACE_API_KEY")
 client = Groq()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 personality_traits = {}
