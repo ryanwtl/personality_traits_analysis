@@ -1,3 +1,4 @@
+system_start_time = time.time()
 import streamlit as st
 import pandas as pd
 import io
@@ -11,7 +12,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from groq import Groq
 from dotenv import load_dotenv
 
-system_start_time = time.time()
 # Title of the app
 st.title("Personality Traits Analysis Streamlit App")
 
@@ -32,7 +32,7 @@ for trait in traits:
 
 def load_roberta(model_path,device):
     # Load the saved model and tokenizer
-    tokenizer = RobertaTokenizer.from_pretrained(model_path)
+    tokenizer = RobertaTokenizer.from_pretrained(model_path, use_auth_token=huggingface_api_key)
     model = RobertaForSequenceClassification.from_pretrained(model_path, use_auth_token=huggingface_api_key, num_labels=1)
     model.to(device)
     return model,tokenizer
