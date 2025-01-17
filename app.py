@@ -45,7 +45,7 @@ def load_analysis_engine():
 
     for t,trait in personality_traits.items():
         path = f"{model_path}{trait}"
-        models[t], tokenizers[t] = load_roberta(path, "cuda")
+        models[t], tokenizers[t] = load_roberta(path, device)
     return models, tokenizers
 
 def text_personality_traits_analysis(sentence,models,tokenizers,max_length=512):
