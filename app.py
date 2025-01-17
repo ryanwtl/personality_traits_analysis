@@ -33,7 +33,7 @@ for trait in traits:
 def load_roberta(model_path,device):
     # Load the saved model and tokenizer
     tokenizer = RobertaTokenizer.from_pretrained(model_path)
-    model = RobertaForSequenceClassification.from_pretrained(model_path, num_labels=1)
+    model = RobertaForSequenceClassification.from_pretrained(model_path, token=huggingface_api_key, num_labels=1)
     model.to(device)
     return model,tokenizer
 
@@ -196,7 +196,7 @@ if option == "Prompt a Sentence":
         insights_of_results(analysis)
 
         elapsed_time = time.time() - start_time
-        print(f"Elapsed time: {elapsed_time:.4f} seconds \n")
+        print(f"Response Elapsed time: {elapsed_time:.4f} seconds \n")
     
 
 elif option == "Upload a CSV":
@@ -210,7 +210,7 @@ elif option == "Upload a CSV":
         csv_personality_traits_analysis(content)
 
         elapsed_time = time.time() - start_time
-        print(f"Elapsed time: {elapsed_time:.4f} seconds \n")
+        print(f"Response Elapsed time: {elapsed_time:.4f} seconds \n")
 
 elif option == "Upload an MP3":
     # File uploader for MP3
@@ -222,7 +222,7 @@ elif option == "Upload an MP3":
         mp3_to_text(content)
 
         elapsed_time = time.time() - start_time
-        print(f"Elapsed time: {elapsed_time:.4f} seconds \n")
+        print(f"Response Elapsed time: {elapsed_time:.4f} seconds \n")
 
 # # Check and display the data type of the content variable
 # if content is not None:
