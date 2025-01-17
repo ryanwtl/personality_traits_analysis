@@ -33,7 +33,7 @@ for trait in traits:
 def load_roberta(model_path,device):
     # Load the saved model and tokenizer
     tokenizer = RobertaTokenizer.from_pretrained(model_path)
-    model = RobertaForSequenceClassification.from_pretrained(model_path, token=huggingface_api_key, num_labels=1)
+    model = RobertaForSequenceClassification.from_pretrained(model_path, use_auth_token=huggingface_api_key, num_labels=1)
     model.to(device)
     return model,tokenizer
 
