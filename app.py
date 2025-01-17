@@ -1,4 +1,3 @@
-system_start_time = time.time()
 import streamlit as st
 import pandas as pd
 import io
@@ -12,6 +11,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from groq import Groq
 from dotenv import load_dotenv
 
+system_start_time = time.time()
 # Title of the app
 st.title("Personality Traits Analysis Streamlit App")
 
