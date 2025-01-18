@@ -189,7 +189,7 @@ don't know. DON'T MAKE UP ANYTHING.
 
 ---
 
-Provide insights based on the above context. Start with the '1. Openness : '.
+Provide insights based on the above context. Start with the '1. **Openness** : '.
 """
 
 def insights_of_results(analysis):
