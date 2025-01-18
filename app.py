@@ -85,12 +85,12 @@ def model_evaluation():
 
     with col1:
 
-        img = mpimg.imread('./results/[BIG5]_RoBERTa_ver4.png')
+        img = mpimg.imread('results/[BIG5]_RoBERTa_ver4.png')
         st.caption('AUC-ROC Curve for RoBERTa Model')
         st.image(img,  use_container_width=True)
 
     with col2:
-        df = pd.read_csv('./results/performance_roberta.csv')
+        df = pd.read_csv('results/performance_roberta.csv')
 
         # Show the table
         st.caption('Performance Table of RoBERTa model on BIG 5')
