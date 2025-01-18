@@ -3,8 +3,6 @@ import pandas as pd
 import io
 import time
 import os
-from pydub import AudioSegment
-from pydub.playback import play
 import torch
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 from langchain_core.prompts import ChatPromptTemplate
