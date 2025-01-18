@@ -1,5 +1,6 @@
-langchain-core==0.3.30
 groq==0.15.0
+langchain-core==0.3.30
+matplotlib==3.10.0
 pandas==2.2.3
 pydub==0.25.1
 python-dotenv==1.0.1
