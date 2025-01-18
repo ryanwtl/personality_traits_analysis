@@ -215,7 +215,7 @@ def insights_of_results(analysis):
     )
 
     result = response.choices[0].message.content
-    st.write(f"""Respond from Chat Assistant : {model}""")
+    st.write(f"""Respond from Chat Assistant : **{model}**""")
     st.write(f"""Based on the provided personality traits scores, here are some insights : \n{result}""")
 
 # ======================================= Analysis Starts HERE ======================================= #
