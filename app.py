@@ -116,6 +116,7 @@ def model_evaluation():
 ### In a nutshell:
 The AUC-ROC results confirm the strengths and weaknesses seen in the other performance metrics. While **Openness** shows relatively strong performance, other traits—especially **Agreeableness** and **Neuroticism**—require further optimization to improve both the AUC and other metrics like precision and accuracy. The model may benefit from more training data, better feature engineering, or hyperparameter tuning to achieve better class separation for the lower-performing traits.
              """)
+    st.markdown("---")
 
 def analysis_result_output1(analysis):
     # Function to output the analysis result
