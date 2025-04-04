@@ -6,7 +6,7 @@ This repository contains a Python-based application that analyzes personality tr
 ---
 
 ## 📁 Project Structure
-
+```
 ```bash
 personality_traits_analysis/
 │
