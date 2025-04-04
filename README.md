@@ -88,9 +88,3 @@ The following figure illustrates the performance of the RoBERTa model across all
 ## 📬 Contact
 
 For questions or contributions, feel free to open an issue or pull request. You can also reach out via email or GitHub Discussions.
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
