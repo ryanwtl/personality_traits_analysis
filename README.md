@@ -1,4 +1,3 @@
-```markdown
 # 🧠 Personality Traits Analysis using RoBERTa
 
 This repository contains a Python-based application that analyzes personality traits using the RoBERTa language model. The model is fine-tuned to predict the Big Five personality traits (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism) from textual data.
@@ -6,7 +5,7 @@ This repository contains a Python-based application that analyzes personality tr
 ---
 
 ## 📁 Project Structure
-```
+
 ```bash
 personality_traits_analysis/
 │
