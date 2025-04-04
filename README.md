@@ -1,7 +1,3 @@
-Absolutely! Here's the updated `README.md` section with your provided performance table rendered properly in Markdown format:
-
----
-
 ```markdown
 # 🧠 Personality Traits Analysis using RoBERTa
 
