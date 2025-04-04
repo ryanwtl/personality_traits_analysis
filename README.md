@@ -94,8 +94,3 @@ For questions or contributions, feel free to open an issue or pull request. You 
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
-```
-
----
-
-Let me know if you want me to help generate the actual LICENSE file or automate the visualization rendering!
