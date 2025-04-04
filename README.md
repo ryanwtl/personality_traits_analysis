@@ -78,9 +78,7 @@ The script will run the RoBERTa model and output the predicted personality trait
 
 The following figure illustrates the performance of the RoBERTa model across all Big Five traits:
 
-<p align="center">
-  <img src="results/[BIG5]_RoBERTa_ver4.png" alt="Model Performance" width="600">
-</p>
+![Alt text](results/[BIG5]_RoBERTa_ver4.png)
 
 ---
 
